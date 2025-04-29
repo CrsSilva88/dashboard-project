@@ -25,11 +25,11 @@ export default function ProgressPieChart({ tasks }: ProgressPieChartProps) {
   const COLORS = ["#00C49F", "#FFBB28", "#FF8042"];
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6">
-      <h2 className="text-xl font-semibold text-center mb-4">
+    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+      <h2 className="text-xl font-semibold text-center mb-4 text-gray-800 dark:text-gray-100">
         Progresso Geral
       </h2>
-      <div className="h-64">
+      <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
