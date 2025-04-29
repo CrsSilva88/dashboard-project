@@ -1,8 +1,7 @@
 export default function Home() {
-    return (
-      <div>
-        <h1>Olá Clayton, o projeto Next.js está rodando!</h1>
-      </div>
-    )
-  }
-  
+  return (
+    <div className="flex items-center justify-center h-screen bg-red-500 text-white text-4xl font-bold">
+      TailwindCSS Funcionando! 🚀
+    </div>
+  );
+}
