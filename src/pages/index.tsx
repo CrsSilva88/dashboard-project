@@ -1,22 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import StatusCard from "../components/StatusCard";
 import ProgressPieChart from "../components/ProgressPieChart";
+import SplashScreen from "../components/SplashScreen";
 import { FaCode, FaDatabase, FaProjectDiagram } from "react-icons/fa";
 import { tasks } from "../data/tasks";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<
     "all" | "done" | "inprogress" | "pending"
   >("all");
 
   const allTasks = [...tasks.frontend, ...tasks.backend, ...tasks.database];
 
-  // Função para filtrar tarefas
   const filterTasks = (taskList: typeof allTasks) => {
     if (filter === "all") return taskList;
     return taskList.filter((t) => t.status === filter);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500); // 1.5 segundos de Splash
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <SplashScreen />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 md:p-10 transition-colors duration-300">
