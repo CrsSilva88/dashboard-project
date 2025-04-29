@@ -1,4 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { motion } from "framer-motion";
 
 interface Task {
   label: string;
@@ -25,7 +26,12 @@ export default function ProgressPieChart({ tasks }: ProgressPieChartProps) {
   const COLORS = ["#00C49F", "#FFBB28", "#FF8042"];
 
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6"
+    >
       <h2 className="text-xl font-semibold text-center mb-4 text-gray-800 dark:text-gray-100">
         Progresso Geral
       </h2>
@@ -40,6 +46,7 @@ export default function ProgressPieChart({ tasks }: ProgressPieChartProps) {
               fill="#8884d8"
               dataKey="value"
               label
+              isAnimationActive={true}
             >
               {data.map((entry, index) => (
                 <Cell
@@ -52,6 +59,6 @@ export default function ProgressPieChart({ tasks }: ProgressPieChartProps) {
           </PieChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </motion.div>
   );
 }
